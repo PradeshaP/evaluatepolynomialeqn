@@ -1,0 +1,62 @@
+A java program to get a polynomial degree of a polynomial and its coefficient as input and get the input for the variable in the polynomial and compute the value of the expression (Use static methods and variables). 
+CODE
+
+import java.util.Scanner;
+class Main
+{
+    
+    static double[] coefficients;
+    static int degree;
+
+    
+    public static void inputPolynomial() {
+        Scanner scanner = new Scanner(System.in);
+
+       
+        System.out.print("Enter the degree of the polynomial: ");
+        degree = scanner.nextInt();
+
+       
+        coefficients = new double[degree + 1];
+
+       
+        System.out.println("Enter the coefficients (from highest degree to lowest): ");
+        for (int i = 0; i <= degree; i++) {
+            System.out.print("Coefficient of x^" + (degree - i) + ": ");
+            coefficients[i] = scanner.nextDouble();
+        }
+    }
+public static double computePolynomial(double x) {
+        double result = 0;
+
+       
+        for (int i = 0; i <= degree; i++) {
+            result += coefficients[i] * Math.pow(x, degree - i);
+        }
+
+        return result;
+    }
+
+    
+    public static void main(String[] args) {
+        inputPolynomial();  
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of x: ");
+        double x = scanner.nextDouble();  
+
+    
+        double result = computePolynomial(x);
+        System.out.println("The value of the polynomial for x = " + x + " is: " + result);
+    }
+}
+OUTPUT
+
+Enter the degree of the polynomial: 2
+Enter the coefficients (from highest degree to lowest): 
+Coefficient of x^2: 3
+Coefficient of x^1: 2
+Coefficient of x^0: 1
+Enter the value of x: 5
+The value of the polynomial for x = 5.0 is: 86.0
+    
